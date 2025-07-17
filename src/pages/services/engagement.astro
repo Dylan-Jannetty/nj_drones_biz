@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ServicePageTemplate from '../../components/ServicePageTemplate.astro';
+
+const features = [
+  "Romantic aerial proposal coverage",
+  "Stunning couple portraits from above",
+  "Beautiful location establishing shots",
+  "Cinematic storytelling of your love story",
+  "Multiple scenic location options",
+  "Professional editing with romantic music",
+  "Perfect for social media sharing",
+  "Ideal for wedding save-the-dates"
+];
+
+const process = [
+  {
+    step: 1,
+    title: "Story Planning",
+    description: "We discuss your love story and plan the perfect aerial shots"
+  },
+  {
+    step: 2,
+    title: "Location Scouting",
+    description: "We find the most romantic and photogenic locations"
+  },
+  {
+    step: 3,
+    title: "Filming Session",
+    description: "Relaxed aerial filming capturing your authentic moments"
+  },
+  {
+    step: 4,
+    title: "Romantic Edit",
+    description: "Professional editing creating your beautiful love story"
+  }
+];
+
+const pricing = {
+  basic: "$499",
+  premium: "$799",
+  enterprise: "$1199"
+};
+---
+
+<BaseLayout 
+  title="Engagement Drone Videography | Romantic Aerial Videos"
+  description="Document your love story with romantic aerial engagement videography. Beautiful drone footage that captures your special moments from unique perspectives."
+>
+  <ServicePageTemplate
+    title="Engagement Videography"
+    description="Document your love story with romantic aerial videography from unique perspectives"
+    heroImage="/images/engagement-hero.jpg"
+    icon="💕"
+    features={features}
+    process={process}
+    pricing={pricing}
+    serviceType="engagement"
+  />
+</BaseLayout>

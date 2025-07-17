@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ServicePageTemplate from '../../components/ServicePageTemplate.astro';
+
+const features = [
+  "Breathtaking aerial ceremony coverage",
+  "Stunning venue establishing shots",
+  "Romantic couple portraits from above",
+  "Reception and party aerial footage",
+  "Unique perspectives of wedding venues",
+  "Cinematic storytelling from the sky",
+  "Professional editing with music",
+  "Multiple video format deliverables"
+];
+
+const process = [
+  {
+    step: 1,
+    title: "Pre-Wedding Meet",
+    description: "We plan your perfect aerial shots and discuss your vision"
+  },
+  {
+    step: 2,
+    title: "Venue Scouting",
+    description: "We visit your venue to plan the best aerial perspectives"
+  },
+  {
+    step: 3,
+    title: "Wedding Day",
+    description: "Discreet aerial filming that captures your special moments"
+  },
+  {
+    step: 4,
+    title: "Editing Magic",
+    description: "Professional editing creating your cinematic wedding story"
+  }
+];
+
+const pricing = {
+  basic: "$799",
+  premium: "$1299",
+  enterprise: "$1999"
+};
+---
+
+<BaseLayout 
+  title="Wedding Drone Videography | Aerial Wedding Videos"
+  description="Capture your special day with breathtaking aerial wedding videography. Professional drone footage that creates lasting memories of your perfect wedding moment."
+>
+  <ServicePageTemplate
+    title="Wedding Videography"
+    description="Capture your special day with breathtaking aerial shots that create lasting memories"
+    heroImage="/images/wedding-hero.jpg"
+    icon="💍"
+    features={features}
+    process={process}
+    pricing={pricing}
+    serviceType="wedding"
+  />
+</BaseLayout>

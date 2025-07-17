@@ -1,0 +1,81 @@
+---
+const testimonials = [
+  {
+    name: "Sarah Johnson",
+    role: "Real Estate Agent",
+    company: "Premier Properties",
+    content: "The aerial footage completely transformed how we showcase our listings. Properties sell 40% faster now!",
+    image: "/images/testimonial-1.jpg",
+    rating: 5
+  },
+  {
+    name: "Mike & Emily Chen",
+    role: "Wedding Couple",
+    company: "Private Client",
+    content: "Our wedding video is absolutely stunning. The aerial shots captured moments we never knew existed!",
+    image: "/images/testimonial-2.jpg",
+    rating: 5
+  },
+  {
+    name: "David Rodriguez",
+    role: "Marketing Director",
+    company: "AutoMax Dealership",
+    content: "Professional service, incredible results. Our car showcase videos have doubled our online engagement.",
+    image: "/images/testimonial-3.jpg",
+    rating: 5
+  }
+];
+---
+
+<section class="section-padding bg-white">
+  <div class="container-max">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        What Our Clients Say
+      </h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Don't just take our word for it - hear from our satisfied clients
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {testimonials.map((testimonial) => (
+        <div class="bg-gray-50 rounded-xl p-8 relative">
+          <!-- Quote Icon -->
+          <div class="absolute top-4 right-4 text-primary-200">
+            <svg class="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+            </svg>
+          </div>
+          
+          <!-- Rating -->
+          <div class="flex mb-4">
+            {Array.from({ length: testimonial.rating }).map(() => (
+              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            ))}
+          </div>
+          
+          <!-- Content -->
+          <p class="text-gray-700 mb-6 italic">"{testimonial.content}"</p>
+          
+          <!-- Author -->
+          <div class="flex items-center">
+            <img 
+              src={testimonial.image} 
+              alt={testimonial.name}
+              class="w-12 h-12 rounded-full object-cover mr-4"
+              loading="lazy"
+            />
+            <div>
+              <h4 class="font-semibold text-gray-900">{testimonial.name}</h4>
+              <p class="text-sm text-gray-600">{testimonial.role}</p>
+              <p class="text-sm text-primary-600">{testimonial.company}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

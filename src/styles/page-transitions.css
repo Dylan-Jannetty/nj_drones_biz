@@ -1,0 +1,51 @@
+/* Page Transition Styles */
+#page-transition {
+  z-index: 9999;
+  transition: opacity 0.3s ease;
+}
+
+#page-overlay {
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
+}
+
+#drone-flight {
+  z-index: 10000;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3));
+  transition: opacity 0.3s ease;
+}
+
+#drone-cable {
+  transition: height 0.3s ease;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+#page-content {
+  background: white;
+}
+
+/* Page content animations */
+@keyframes pageFloat {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+#page-overlay {
+  animation: pageFloat 4s ease-in-out infinite;
+}
+
+/* Smooth hardware acceleration */
+#page-overlay,
+#drone-flight {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  will-change: transform;
+}

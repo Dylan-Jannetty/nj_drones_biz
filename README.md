@@ -1,47 +1,79 @@
-# Astro Starter Kit: Minimal
+# NJ Drones - Professional Drone Videography Website
 
-```sh
-npm create astro@latest -- --template minimal
-```
+A modern, responsive website for professional drone videography services built with Astro and Tailwind CSS.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+## 🚀 Features
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- **Modern Design**: Clean, professional design with light blue color scheme
+- **Responsive Layout**: Mobile-first design that works on all devices
+- **Video Background**: Hero section with autoplay video background
+- **Service Pages**: Dedicated pages for each service type
+- **Portfolio Gallery**: Filterable portfolio with video lightbox
+- **SEO Optimized**: Meta tags, Open Graph, structured data, and sitemap
+- **Performance Focused**: Optimized for Core Web Vitals
+- **Accessibility**: WCAG 2.1 AA compliance
 
-## 🚀 Project Structure
+## 🛠️ Tech Stack
 
-Inside of your Astro project, you'll see the following folders and files:
+- **Framework**: Astro (Static Site Generator)
+- **Styling**: Tailwind CSS
+- **Language**: TypeScript
+- **Deployment**: Netlify
+- **Video**: Self-hosted with CDN optimization
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## 🚀 Getting Started
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+1. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+2. **Start development server**
+   ```bash
+   npm run dev
+   ```
 
-Any static assets, like images, can be placed in the `public/` directory.
+3. **Build for production**
+   ```bash
+   npm run build
+   ```
 
-## 🧞 Commands
+## 🎨 Services Offered
 
-All commands are run from the root of the project, from a terminal:
+1. **Real Estate Videography** - Property tours and marketing
+2. **Wedding Videography** - Ceremony and reception coverage
+3. **Engagement Videography** - Romantic couple sessions
+4. **Automotive Videography** - Vehicle showcases and dealership tours
+5. **Marine Videography** - Boat and yacht documentation
+6. **Business Videography** - Corporate and promotional videos
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## 📱 Responsive Design
 
-## 👀 Want to learn more?
+The website is fully responsive and optimized for all devices.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## 🎯 SEO Features
+
+- Dynamic meta tags and Open Graph
+- Structured data (JSON-LD) for business information
+- XML sitemap generation
+- Robots.txt optimization
+- Clean URL structure
+
+## 📊 Performance Optimizations
+
+- Static site generation for fast loading
+- Lazy loading for images and videos
+- Optimized video formats (MP4/WebM)
+- CDN delivery through Netlify
+
+## 🚀 Deployment
+
+### Netlify (Recommended)
+1. Connect your Git repository to Netlify
+2. Set build command: `npm run build`
+3. Set publish directory: `dist`
+4. Deploy!
+
+---
+
+Built with ❤️ using Astro and Tailwind CSS

@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ServicePageTemplate from '../../components/ServicePageTemplate.astro';
+
+const features = [
+  "Stunning boat and yacht showcase videos",
+  "Marina and harbor aerial tours",
+  "Waterfront property documentation",
+  "Sailing and boating event coverage",
+  "Fishing charter promotional videos",
+  "Maritime facility inspections",
+  "Coastal property marketing",
+  "Regatta and boat race coverage"
+];
+
+const process = [
+  {
+    step: 1,
+    title: "Marine Consultation",
+    description: "We discuss your marine project and water safety protocols"
+  },
+  {
+    step: 2,
+    title: "Water Planning",
+    description: "We plan flight paths considering marine conditions"
+  },
+  {
+    step: 3,
+    title: "Aerial Filming",
+    description: "Professional drone footage over water with safety focus"
+  },
+  {
+    step: 4,
+    title: "Marine Edit",
+    description: "Edited videos showcasing the beauty of marine life"
+  }
+];
+
+const pricing = {
+  basic: "$499",
+  premium: "$899",
+  enterprise: "$1599"
+};
+---
+
+<BaseLayout 
+  title="Marine Drone Videography | Boat & Yacht Showcase Videos"
+  description="Capture boats, yachts, and waterfront properties with stunning aerial drone videography. Professional marine marketing videos over water."
+>
+  <ServicePageTemplate
+    title="Marine Videography"
+    description="Capture boats, yachts, and waterfront properties with stunning aerial perspectives"
+    heroImage="/images/marine-hero.jpg"
+    icon="⛵"
+    features={features}
+    process={process}
+    pricing={pricing}
+    serviceType="marine"
+  />
+</BaseLayout>

@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://njdrones.com/sitemap.xml
+
+# Disallow admin and private directories
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+
+# Allow specific files
+Allow: /images/
+Allow: /videos/
+Allow: /css/
+Allow: /js/

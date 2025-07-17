@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ServicePageTemplate from '../../components/ServicePageTemplate.astro';
+
+const features = [
+  "Dynamic vehicle showcase videos",
+  "Professional dealership facility tours",
+  "Auto show and event coverage",
+  "Classic car collection documentation",
+  "Racing event aerial cinematography",
+  "Car launch and reveal videos",
+  "Test drive route demonstrations",
+  "Inventory showcase for online sales"
+];
+
+const process = [
+  {
+    step: 1,
+    title: "Vehicle Planning",
+    description: "We discuss your automotive goals and vehicle features"
+  },
+  {
+    step: 2,
+    title: "Location Setup",
+    description: "We choose the perfect settings to showcase your vehicles"
+  },
+  {
+    step: 3,
+    title: "Dynamic Filming",
+    description: "Professional aerial footage capturing vehicles in motion"
+  },
+  {
+    step: 4,
+    title: "Final Production",
+    description: "Edited videos perfect for sales and marketing"
+  }
+];
+
+const pricing = {
+  basic: "$399",
+  premium: "$799",
+  enterprise: "$1399"
+};
+---
+
+<BaseLayout 
+  title="Automotive Drone Videography | Vehicle Showcase Videos"
+  description="Showcase vehicles with dynamic aerial drone videography. Professional automotive marketing videos perfect for dealerships, auto shows, and private collections."
+>
+  <ServicePageTemplate
+    title="Automotive Videography"
+    description="Showcase vehicles with dynamic aerial footage perfect for sales and marketing"
+    heroImage="/images/automotive-hero.jpg"
+    icon="🚗"
+    features={features}
+    process={process}
+    pricing={pricing}
+    serviceType="automotive"
+  />
+</BaseLayout>

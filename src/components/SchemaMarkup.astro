@@ -1,0 +1,96 @@
+---
+interface Props {
+  type: "organization" | "service" | "webpage";
+  data?: any;
+}
+
+const { type, data } = Astro.props;
+
+const baseOrganization = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "nj Drones",
+  description:
+    "Professional drone videography services for real estate, weddings, automotive, and business promotions in New Jersey and surrounding areas.",
+  url: "https://njdrones.com",
+  logo: "https://njdrones.com/images/logo.png",
+  image: "https://njdrones.com/images/hero-background.jpg",
+  telephone: "+1-555-123-4567",
+  email: "info@njdrones.com",
+  address: {
+    "@type": "PostalAddress",
+    addressRegion: "NJ",
+    addressCountry: "US",
+  },
+  areaServed: {
+    "@type": "State",
+    name: "New Jersey",
+  },
+  serviceArea: {
+    "@type": "GeoCircle",
+    geoMidpoint: {
+      "@type": "GeoCoordinates",
+      latitude: 40.0583,
+      longitude: -74.4057,
+    },
+    geoRadius: "100 miles",
+  },
+  sameAs: [
+    "https://www.facebook.com/njdrones",
+    "https://www.instagram.com/njdrones",
+    "https://www.youtube.com/njdrones",
+  ],
+};
+
+const generateServiceSchema = (serviceData: any) => ({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: serviceData.name,
+  description: serviceData.description,
+  provider: baseOrganization,
+  areaServed: baseOrganization.areaServed,
+  serviceType: "Drone Videography",
+  category: serviceData.category,
+  offers: {
+    "@type": "Offer",
+    availability: "https://schema.org/InStock",
+    priceRange: serviceData.priceRange,
+  },
+});
+
+const generateWebPageSchema = (pageData: any) => ({
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  name: pageData.name,
+  description: pageData.description,
+  url: pageData.url,
+  mainEntity: baseOrganization,
+  breadcrumb: {
+    "@type": "BreadcrumbList",
+    itemListElement:
+      pageData.breadcrumbs?.map((crumb: any, index: number) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: crumb.name,
+        item: crumb.url,
+      })) || [],
+  },
+});
+
+let schemaData;
+switch (type) {
+  case "organization":
+    schemaData = baseOrganization;
+    break;
+  case "service":
+    schemaData = generateServiceSchema(data);
+    break;
+  case "webpage":
+    schemaData = generateWebPageSchema(data);
+    break;
+  default:
+    schemaData = baseOrganization;
+}
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schemaData)} />

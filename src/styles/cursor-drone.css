@@ -1,0 +1,14 @@
+/* Cursor following drone styles */
+@keyframes cursorSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.cursor-drone-body {
+  filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.2));
+}
+
+#cursor-drone {
+  will-change: transform;
+  transition: opacity 0.3s ease;
+}

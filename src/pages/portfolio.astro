@@ -1,0 +1,462 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const portfolioItems = [
+  {
+    id: 1,
+    title: "Luxury Estate Overview",
+    category: "real-estate",
+    videoSrc: "/videos/portfolio/real-estate-1.mp4",
+    thumbnail: "/images/portfolio/real-estate-1.jpg",
+    description: "Stunning 5-bedroom estate with panoramic views",
+  },
+  {
+    id: 2,
+    title: "Modern Condo Complex",
+    category: "real-estate",
+    videoSrc: "/videos/portfolio/real-estate-2.mp4",
+    thumbnail: "/images/portfolio/real-estate-2.jpg",
+    description: "Contemporary condo development showcase",
+  },
+  {
+    id: 3,
+    title: "Garden Wedding Ceremony",
+    category: "wedding",
+    videoSrc: "/videos/portfolio/wedding-1.mp4",
+    thumbnail: "/images/portfolio/wedding-1.jpg",
+    description: "Beautiful outdoor wedding ceremony",
+  },
+  {
+    id: 4,
+    title: "Beach Wedding Reception",
+    category: "wedding",
+    videoSrc: "/videos/portfolio/wedding-2.mp4",
+    thumbnail: "/images/portfolio/wedding-2.jpg",
+    description: "Romantic beachside wedding celebration",
+  },
+  {
+    id: 5,
+    title: "Sunset Engagement",
+    category: "engagement",
+    videoSrc: "/videos/portfolio/engagement-1.mp4",
+    thumbnail: "/images/portfolio/engagement-1.jpg",
+    description: "Romantic sunset engagement session",
+  },
+  {
+    id: 6,
+    title: "City Skyline Proposal",
+    category: "engagement",
+    videoSrc: "/videos/portfolio/engagement-2.mp4",
+    thumbnail: "/images/portfolio/engagement-2.jpg",
+    description: "Urban rooftop proposal with city views",
+  },
+  {
+    id: 7,
+    title: "Luxury Car Collection",
+    category: "automotive",
+    videoSrc: "/videos/portfolio/automotive-1.mp4",
+    thumbnail: "/images/portfolio/automotive-1.jpg",
+    description: "High-end vehicle showcase",
+  },
+  {
+    id: 8,
+    title: "Classic Car Show",
+    category: "automotive",
+    videoSrc: "/videos/portfolio/automotive-2.mp4",
+    thumbnail: "/images/portfolio/automotive-2.jpg",
+    description: "Vintage automobile exhibition",
+  },
+  {
+    id: 9,
+    title: "Yacht Club Marina",
+    category: "marine",
+    videoSrc: "/videos/portfolio/marine-1.mp4",
+    thumbnail: "/images/portfolio/marine-1.jpg",
+    description: "Exclusive yacht club facility",
+  },
+  {
+    id: 10,
+    title: "Sailing Regatta",
+    category: "marine",
+    videoSrc: "/videos/portfolio/marine-2.mp4",
+    thumbnail: "/images/portfolio/marine-2.jpg",
+    description: "Competitive sailing event coverage",
+  },
+  {
+    id: 11,
+    title: "Corporate Headquarters",
+    category: "business",
+    videoSrc: "/videos/portfolio/business-1.mp4",
+    thumbnail: "/images/portfolio/business-1.jpg",
+    description: "Modern corporate facility tour",
+  },
+  {
+    id: 12,
+    title: "Manufacturing Plant",
+    category: "business",
+    videoSrc: "/videos/portfolio/business-2.mp4",
+    thumbnail: "/images/portfolio/business-2.jpg",
+    description: "Industrial facility documentation",
+  },
+];
+
+const categories = [
+  { id: "all", name: "All Work", count: portfolioItems.length },
+  {
+    id: "real-estate",
+    name: "Real Estate",
+    count: portfolioItems.filter((item) => item.category === "real-estate")
+      .length,
+  },
+  {
+    id: "wedding",
+    name: "Wedding",
+    count: portfolioItems.filter((item) => item.category === "wedding").length,
+  },
+  {
+    id: "engagement",
+    name: "Engagement",
+    count: portfolioItems.filter((item) => item.category === "engagement")
+      .length,
+  },
+  {
+    id: "automotive",
+    name: "Automotive",
+    count: portfolioItems.filter((item) => item.category === "automotive")
+      .length,
+  },
+  {
+    id: "marine",
+    name: "Marine",
+    count: portfolioItems.filter((item) => item.category === "marine").length,
+  },
+  {
+    id: "business",
+    name: "Business",
+    count: portfolioItems.filter((item) => item.category === "business").length,
+  },
+];
+---
+
+<BaseLayout
+  title="Portfolio - Drone Videography Gallery | NJ Drones"
+  description="View our portfolio of professional drone videography work including real estate, weddings, automotive, marine, and business projects."
+>
+  <section class="section-padding bg-gray-50">
+    <div class="container-max">
+      <div class="text-center mb-16">
+        <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          Our Portfolio
+        </h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Discover our stunning aerial videography work across various
+          industries
+        </p>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="flex flex-wrap justify-center gap-4 mb-12">
+        {
+          categories.map((category) => (
+            <button
+              class="portfolio-filter-btn px-6 py-3 rounded-lg border-2 transition-all duration-200 hover:bg-primary-600 hover:text-white hover:border-primary-600"
+              data-filter={category.id}
+            >
+              {category.name} ({category.count})
+            </button>
+          ))
+        }
+      </div>
+
+      <!-- Portfolio Grid -->
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        id="portfolio-grid"
+      >
+        {
+          portfolioItems.map((item) => (
+            <div
+              class="portfolio-item bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transform transition-all duration-500 ease-in-out hover:scale-105 hover:shadow-xl"
+              data-category={item.category}
+              data-video={item.videoSrc}
+              data-title={item.title}
+              data-description={item.description}
+            >
+              <div class="relative overflow-hidden">
+                <img
+                  src={item.thumbnail}
+                  alt={item.title}
+                  class="w-full h-64 object-cover"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center">
+                  <div class="text-white opacity-0 hover:opacity-100 transition-opacity duration-300">
+                    <svg
+                      class="w-16 h-16"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M14.828 14.828a4 4 0 01-5.656 0M9 10h6m-3-3v6m5.99-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+
+              <div class="p-6">
+                <h3 class="text-xl font-semibold text-gray-900 mb-2">
+                  {item.title}
+                </h3>
+                <p class="text-gray-600 mb-4">{item.description}</p>
+                <span class="inline-block bg-primary-100 text-primary-800 text-sm font-medium px-3 py-1 rounded-full">
+                  {categories.find((cat) => cat.id === item.category)?.name}
+                </span>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Modal -->
+  <div
+    id="video-modal"
+    class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden flex items-center justify-center"
+  >
+    <div class="bg-white rounded-lg max-w-4xl w-full mx-4 overflow-hidden">
+      <div class="flex justify-between items-center p-4 border-b">
+        <h3 id="modal-title" class="text-xl font-semibold"></h3>
+        <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <div class="p-4">
+        <video id="modal-video" class="w-full h-auto max-h-96" controls>
+          Your browser does not support the video tag.
+        </video>
+        <p id="modal-description" class="text-gray-600 mt-4"></p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  /* Enhanced portfolio item animations */
+  .portfolio-item {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .portfolio-item:hover {
+    transform: translateY(-8px) scale(1.02);
+  }
+
+  /* Modal animations */
+  #video-modal {
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  /* Filter button animations */
+  .portfolio-filter-btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .portfolio-filter-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+    );
+    transition: left 0.5s;
+  }
+
+  .portfolio-filter-btn:hover::before {
+    left: 100%;
+  }
+
+  /* Grid layout improvements */
+  #portfolio-grid {
+    min-height: 400px;
+  }
+
+  /* Smooth image loading */
+  .portfolio-item img {
+    transition: transform 0.3s ease;
+  }
+
+  .portfolio-item:hover img {
+    transform: scale(1.05);
+  }
+
+  /* Loading state for better UX */
+  .portfolio-item.loading {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+</style>
+
+<script>
+  // Portfolio filtering functionality
+  const filterBtns = document.querySelectorAll(".portfolio-filter-btn");
+  const portfolioItems = document.querySelectorAll(".portfolio-item");
+  const portfolioGrid = document.getElementById("portfolio-grid");
+  const videoModal = document.getElementById("video-modal");
+  const modalVideo = document.getElementById("modal-video");
+  const modalTitle = document.getElementById("modal-title");
+  const modalDescription = document.getElementById("modal-description");
+  const closeModal = document.getElementById("close-modal");
+
+  // Enhanced filter functionality with smooth animations
+  let isAnimating = false;
+
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      e.preventDefault();
+      if (isAnimating) return;
+
+      const filter = btn.dataset.filter;
+      isAnimating = true;
+
+      // Update active button
+      filterBtns.forEach((b) =>
+        b.classList.remove("bg-primary-600", "text-white", "border-primary-600")
+      );
+      btn.classList.add("bg-primary-600", "text-white", "border-primary-600");
+
+      // Animate items out
+      portfolioItems.forEach((item, index) => {
+        const shouldShow = filter === "all" || item.dataset.category === filter;
+
+        if (!shouldShow) {
+          // Stagger the fade out animation
+          setTimeout(() => {
+            item.style.opacity = "0";
+            item.style.transform = "scale(0.8) translateY(20px)";
+          }, index * 50);
+        }
+      });
+
+      // Wait for fade out, then rearrange and fade in
+      setTimeout(() => {
+        portfolioItems.forEach((item, index) => {
+          const shouldShow =
+            filter === "all" || item.dataset.category === filter;
+
+          if (shouldShow) {
+            item.style.display = "block";
+            item.style.opacity = "0";
+            item.style.transform = "scale(0.8) translateY(20px)";
+
+            // Stagger the fade in animation
+            setTimeout(() => {
+              item.style.opacity = "1";
+              item.style.transform = "scale(1) translateY(0)";
+            }, index * 100);
+          } else {
+            item.style.display = "none";
+          }
+        });
+
+        // Reset animation lock after all animations complete
+        setTimeout(
+          () => {
+            isAnimating = false;
+          },
+          portfolioItems.length * 100 + 500
+        );
+      }, 400);
+    });
+  });
+
+  // Set initial active filter
+  filterBtns[0].classList.add(
+    "bg-primary-600",
+    "text-white",
+    "border-primary-600"
+  );
+
+  // Enhanced modal functionality
+  portfolioItems.forEach((item) => {
+    item.addEventListener("click", () => {
+      const videoSrc = item.dataset.video;
+      const title = item.dataset.title;
+      const description = item.dataset.description;
+
+      modalVideo.src = videoSrc;
+      modalTitle.textContent = title;
+      modalDescription.textContent = description;
+
+      // Smooth modal opening
+      videoModal.classList.remove("hidden");
+      videoModal.style.opacity = "0";
+      videoModal.style.transform = "scale(0.9)";
+
+      requestAnimationFrame(() => {
+        videoModal.style.opacity = "1";
+        videoModal.style.transform = "scale(1)";
+      });
+
+      document.body.style.overflow = "hidden";
+    });
+  });
+
+  // Enhanced modal closing
+  function closeModalAnimated() {
+    videoModal.style.opacity = "0";
+    videoModal.style.transform = "scale(0.9)";
+
+    setTimeout(() => {
+      videoModal.classList.add("hidden");
+      modalVideo.src = "";
+      document.body.style.overflow = "auto";
+    }, 200);
+  }
+
+  // Close modal
+  closeModal.addEventListener("click", closeModalAnimated);
+
+  // Close modal on outside click
+  videoModal.addEventListener("click", (e) => {
+    if (e.target === videoModal) {
+      closeModalAnimated();
+    }
+  });
+
+  // Close modal with Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !videoModal.classList.contains("hidden")) {
+      closeModalAnimated();
+    }
+  });
+</script>

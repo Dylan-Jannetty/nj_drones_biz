@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ServicePageTemplate from '../../components/ServicePageTemplate.astro';
+
+const features = [
+  "Professional corporate facility tours",
+  "Business promotional video content",
+  "Corporate event aerial coverage",
+  "Construction progress documentation",
+  "Industrial facility inspections",
+  "Company culture and team videos",
+  "Product launch event coverage",
+  "Brand storytelling from above"
+];
+
+const process = [
+  {
+    step: 1,
+    title: "Business Goals",
+    description: "We understand your business objectives and target audience"
+  },
+  {
+    step: 2,
+    title: "Brand Planning",
+    description: "We plan shots that align with your brand identity"
+  },
+  {
+    step: 3,
+    title: "Professional Filming",
+    description: "Corporate-grade aerial footage of your business"
+  },
+  {
+    step: 4,
+    title: "Brand Delivery",
+    description: "Polished videos ready for your marketing campaigns"
+  }
+];
+
+const pricing = {
+  basic: "$599",
+  premium: "$1199",
+  enterprise: "$2499"
+};
+---
+
+<BaseLayout 
+  title="Business Drone Videography | Corporate Promotional Videos"
+  description="Professional business promotional videos with aerial drone footage. Corporate videography that highlights your facility, events, and brand story."
+>
+  <ServicePageTemplate
+    title="Business Videography"
+    description="Professional promotional videos that highlight your business and corporate events"
+    heroImage="/images/business-hero.jpg"
+    icon="🏢"
+    features={features}
+    process={process}
+    pricing={pricing}
+    serviceType="business"
+  />
+</BaseLayout>

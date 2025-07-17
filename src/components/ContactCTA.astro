@@ -1,0 +1,50 @@
+---
+interface Props {
+  title?: string;
+  subtitle?: string;
+  primaryText?: string;
+  secondaryText?: string;
+}
+
+const {
+  title = "Ready to Capture Something Amazing?",
+  subtitle = "Get in touch today for a free consultation and quote. We're available 7 days a week and ready to bring your vision to life.",
+  primaryText = "Get Free Quote",
+  secondaryText = "Call Now",
+} = Astro.props;
+---
+
+<section class="section-padding bg-primary-600">
+  <div class="container-max">
+    <div class="text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+        {title}
+      </h2>
+      <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+        {subtitle}
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a
+          href="/contact"
+          class="bg-white text-primary-600 hover:bg-gray-100 font-semibold py-4 px-8 rounded-lg transition-colors duration-200 text-lg"
+        >
+          {primaryText}
+        </a>
+        <a
+          href="tel:+15551234567"
+          class="bg-primary-700 hover:bg-primary-800 text-white font-semibold py-4 px-8 rounded-lg transition-colors duration-200 text-lg"
+        >
+          {secondaryText}
+        </a>
+      </div>
+
+      <div class="mt-8 text-primary-100">
+        <p class="text-sm">
+          📧 info@njdrones.com | 📱 (555) 123-4567 | 📍 New Jersey & Surrounding
+          Areas
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

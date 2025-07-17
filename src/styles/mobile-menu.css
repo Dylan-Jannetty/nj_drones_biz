@@ -1,0 +1,37 @@
+/* Mobile hamburger menu styles */
+.hamburger-lines {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 16px;
+  cursor: pointer;
+  position: relative;
+}
+
+.hamburger-line {
+  width: 100%;
+  height: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+  border-radius: 1px;
+}
+
+.hamburger-line:nth-child(1) {
+  top: 0;
+}
+
+.hamburger-line:nth-child(2) {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hamburger-line:nth-child(3) {
+  bottom: 0;
+}
+
+/* Mobile menu overlay animations */
+#mobile-menu-overlay {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}

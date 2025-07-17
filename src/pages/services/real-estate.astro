@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ServicePageTemplate from '../../components/ServicePageTemplate.astro';
+
+const features = [
+  "Stunning aerial property tours that showcase unique perspectives",
+  "High-resolution photography for listings and marketing materials",
+  "Neighborhood and location context shots",
+  "Commercial property documentation",
+  "Construction progress monitoring",
+  "Land development and surveying support",
+  "Virtual property staging enhancements",
+  "Social media ready content packages"
+];
+
+const process = [
+  {
+    step: 1,
+    title: "Consultation",
+    description: "We discuss your property goals and plan the perfect shoot"
+  },
+  {
+    step: 2,
+    title: "Site Planning",
+    description: "We scout the location and plan optimal flight paths"
+  },
+  {
+    step: 3,
+    title: "Filming",
+    description: "Professional drone videography capturing every angle"
+  },
+  {
+    step: 4,
+    title: "Delivery",
+    description: "Edited footage delivered within 48-72 hours"
+  }
+];
+
+const pricing = {
+  basic: "$299",
+  premium: "$599",
+  enterprise: "$999"
+};
+---
+
+<BaseLayout 
+  title="Real Estate Drone Videography | Professional Property Marketing"
+  description="Transform your real estate listings with stunning aerial drone videography. Professional property marketing videos that sell homes 40% faster. Serving New Jersey and surrounding areas."
+>
+  <ServicePageTemplate
+    title="Real Estate Videography"
+    description="Transform your property listings with stunning aerial footage that sells homes 40% faster"
+    heroImage="/images/real-estate-hero.jpg"
+    icon="🏠"
+    features={features}
+    process={process}
+    pricing={pricing}
+    serviceType="real-estate"
+  />
+</BaseLayout>
