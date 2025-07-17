@@ -27,9 +27,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
           <form
             data-netlify="true"
-            netlify-honeypot
+            netlify-honeypot="bot-field"
             name="contact"
             method="POST"
+            action="/thanks"
           >
             <p class="hidden">
               <label>
