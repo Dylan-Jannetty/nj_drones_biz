@@ -1,27 +1,28 @@
 // Cursor following drone functionality
-let cursorDroneInitialized = false;
-let cursorDroneAnimationId = null;
+interface CursorPosition {
+  x: number;
+  y: number;
+}
 
-function initializeCursorDrone() {
-  if (cursorDroneInitialized) return;
+interface DroneState {
+  initialized: boolean;
+  animationId: number | null;
+  position: CursorPosition;
+}
+
+let droneState: DroneState = {
+  initialized: false,
+  animationId: null,
+  position: { x: 0, y: 0 }
+};
+
+const cursor: CursorPosition = { x: 0, y: 0 };
+
+export function initializeCursorDrone(): void {
+  if (droneState.initialized) return;
   
-  const cursor = { x: 0, y: 0 };
-  const dronePosition = { x: 0, y: 0 };
-  
-  // Create cursor drone element
-  const cursorDrone = document.createElement("div");
-  cursorDrone.id = "cursor-drone";
-  cursorDrone.style.cssText = `
-    position: fixed;
-    width: 100px;
-    height: 100px;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    will-change: transform;
-  `;
+  const cursorDrone = document.getElementById("cursor-drone") as HTMLElement | null;
+  if (!cursorDrone) return;
   
   // Add drone SVG
   cursorDrone.innerHTML = `
@@ -74,10 +75,11 @@ function initializeCursorDrone() {
     </svg>
   `;
   
-  document.body.appendChild(cursorDrone);
+  cursorDrone.style.transform = "translate(-50%, -50%)";
+  cursorDrone.style.opacity = "0";
   
   // Track cursor position
-  document.addEventListener("mousemove", (e) => {
+  document.addEventListener("mousemove", (e: MouseEvent) => {
     cursor.x = e.clientX;
     cursor.y = e.clientY;
   });
@@ -91,28 +93,38 @@ function initializeCursorDrone() {
     cursorDrone.style.opacity = "0";
   });
   
-  // Smooth following animation
-  function animateCursorDrone() {
-    const distanceX = cursor.x - dronePosition.x;
-    const distanceY = cursor.y - dronePosition.y;
-    
-    // Easing factor for smooth following
-    const easing = 0.1;
-    
-    // Update drone position with easing
-    dronePosition.x += distanceX * easing;
-    dronePosition.y += distanceY * easing;
-    
-    // Apply transform
-    cursorDrone.style.transform = `translate(${dronePosition.x - 50}px, ${dronePosition.y - 50}px)`;
-    
-    cursorDroneAnimationId = requestAnimationFrame(animateCursorDrone);
-  }
-  
   // Start animation
-  animateCursorDrone();
-  cursorDroneInitialized = true;
+  animateCursorDrone(cursorDrone);
+  droneState.initialized = true;
 }
 
-// Export function for global use
-window.initializeCursorDrone = initializeCursorDrone;
+function animateCursorDrone(droneElement: HTMLElement): void {
+  const distanceX = cursor.x - droneState.position.x;
+  const distanceY = cursor.y - droneState.position.y;
+  
+  // Easing factor for smooth following
+  const easing = 0.1;
+  
+  // Update drone position with easing
+  droneState.position.x += distanceX * easing;
+  droneState.position.y += distanceY * easing;
+  
+  // Apply transform
+  droneElement.style.transform = `translate(${droneState.position.x - 50}px, ${droneState.position.y - 50}px)`;
+  
+  droneState.animationId = requestAnimationFrame(() => animateCursorDrone(droneElement));
+}
+
+export function resetCursorDrone(): void {
+  if (droneState.animationId) {
+    cancelAnimationFrame(droneState.animationId);
+  }
+  droneState.initialized = false;
+  droneState.animationId = null;
+  droneState.position = { x: 0, y: 0 };
+}
+
+// Initialize on DOM content loaded
+document.addEventListener("DOMContentLoaded", () => {
+  initializeCursorDrone();
+});
