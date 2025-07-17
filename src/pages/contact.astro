@@ -25,7 +25,19 @@ import BaseLayout from "../layouts/BaseLayout.astro";
             Get Your Free Quote
           </h2>
 
-          <form class="space-y-6" action="#" method="POST">
+          <form
+            data-netlify="true"
+            netlify-honeypot
+            name="feedback"
+            method="POST"
+            action="/success"
+          >
+            <p class="hidden">
+              <label>
+                Don’t fill this out if you’re human: <input name="bot-field" />
+              </label>
+            </p>
+            <input type="hidden" name="form-name" value="feedback" />
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <label
@@ -379,18 +391,6 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 </BaseLayout>
 
 <script>
-  // Handle form submission
-  document.querySelector("form").addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    // Here you would typically send the form data to your backend
-    // For now, we'll just show a success message
-    alert("Thank you for your message! We'll get back to you within 24 hours.");
-
-    // Reset form
-    this.reset();
-  });
-
   // Check for service parameter in URL
   const urlParams = new URLSearchParams(window.location.search);
   const serviceParam = urlParams.get("service");
