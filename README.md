@@ -9,6 +9,7 @@ A modern, responsive website for professional drone videography services built w
 - **Video Background**: Hero section with autoplay video background
 - **Service Pages**: Dedicated pages for each service type
 - **Portfolio Gallery**: Filterable portfolio with video lightbox
+- **Contact Form**: Netlify Forms integration with spam protection
 - **SEO Optimized**: Meta tags, Open Graph, structured data, and sitemap
 - **Performance Focused**: Optimized for Core Web Vitals
 - **Accessibility**: WCAG 2.1 AA compliance
@@ -73,6 +74,13 @@ The website is fully responsive and optimized for all devices.
 2. Set build command: `npm run build`
 3. Set publish directory: `dist`
 4. Deploy!
+
+### Netlify Forms Configuration
+The contact form is configured to work with Netlify Forms:
+- Automatic form detection and spam protection
+- Submissions redirect to `/thanks` page
+- Honeypot field for additional bot protection
+- Form submissions are available in your Netlify dashboard
 
 ---
 

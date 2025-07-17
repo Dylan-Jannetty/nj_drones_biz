@@ -159,7 +159,7 @@ const categories = [
         {
           categories.map((category) => (
             <button
-              class="portfolio-filter-btn px-6 py-3 rounded-lg border-2 transition-all duration-200 hover:bg-primary-600 hover:text-white hover:border-primary-600"
+              class="portfolio-filter-btn px-8 py-4 rounded-lg border-2 transition-all duration-200 hover:bg-primary-600 hover:text-white hover:border-primary-600 min-h-[50px] flex items-center justify-center"
               data-filter={category.id}
             >
               {category.name} ({category.count})
@@ -227,7 +227,7 @@ const categories = [
   <!-- Video Modal -->
   <div
     id="video-modal"
-    class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden flex items-center justify-center"
+    class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden items-center justify-center"
   >
     <div class="bg-white rounded-lg max-w-4xl w-full mx-4 overflow-hidden">
       <div class="flex justify-between items-center p-4 border-b">
@@ -263,7 +263,11 @@ const categories = [
   .portfolio-item {
     opacity: 1;
     transform: scale(1) translateY(0);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .portfolio-item.filtering {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .portfolio-item:hover {
@@ -327,14 +331,13 @@ const categories = [
 
 <script>
   // Portfolio filtering functionality
-  const filterBtns = document.querySelectorAll(".portfolio-filter-btn");
-  const portfolioItems = document.querySelectorAll(".portfolio-item");
-  const portfolioGrid = document.getElementById("portfolio-grid");
-  const videoModal = document.getElementById("video-modal");
-  const modalVideo = document.getElementById("modal-video");
-  const modalTitle = document.getElementById("modal-title");
-  const modalDescription = document.getElementById("modal-description");
-  const closeModal = document.getElementById("close-modal");
+  const filterBtns = document.querySelectorAll(".portfolio-filter-btn") as NodeListOf<HTMLButtonElement>;
+  const portfolioItems = document.querySelectorAll(".portfolio-item") as NodeListOf<HTMLElement>;
+  const videoModal = document.getElementById("video-modal") as HTMLElement;
+  const modalVideo = document.getElementById("modal-video") as HTMLVideoElement;
+  const modalTitle = document.getElementById("modal-title") as HTMLElement;
+  const modalDescription = document.getElementById("modal-description") as HTMLElement;
+  const closeModal = document.getElementById("close-modal") as HTMLElement;
 
   // Enhanced filter functionality with smooth animations
   let isAnimating = false;
@@ -354,47 +357,57 @@ const categories = [
       );
       btn.classList.add("bg-primary-600", "text-white", "border-primary-600");
 
-      // Animate items out
-      portfolioItems.forEach((item, index) => {
-        const shouldShow = filter === "all" || item.dataset.category === filter;
+      // Add filtering class for animation
+      portfolioItems.forEach((item) => {
+        item.classList.add("filtering");
+      });
 
-        if (!shouldShow) {
-          // Stagger the fade out animation
-          setTimeout(() => {
-            item.style.opacity = "0";
-            item.style.transform = "scale(0.8) translateY(20px)";
-          }, index * 50);
+      // Determine which items to show/hide
+      const itemsToShow: HTMLElement[] = [];
+      const itemsToHide: HTMLElement[] = [];
+      
+      portfolioItems.forEach((item) => {
+        const shouldShow = filter === "all" || item.dataset.category === filter;
+        if (shouldShow) {
+          itemsToShow.push(item);
+        } else {
+          itemsToHide.push(item);
         }
       });
 
-      // Wait for fade out, then rearrange and fade in
+      // Hide items that don't match filter
+      itemsToHide.forEach((item) => {
+        item.style.opacity = "0";
+        item.style.transform = "scale(0.8) translateY(20px)";
+      });
+
+      // Wait for hide animation, then show matching items
       setTimeout(() => {
-        portfolioItems.forEach((item, index) => {
-          const shouldShow =
-            filter === "all" || item.dataset.category === filter;
-
-          if (shouldShow) {
-            item.style.display = "block";
-            item.style.opacity = "0";
-            item.style.transform = "scale(0.8) translateY(20px)";
-
-            // Stagger the fade in animation
-            setTimeout(() => {
-              item.style.opacity = "1";
-              item.style.transform = "scale(1) translateY(0)";
-            }, index * 100);
-          } else {
-            item.style.display = "none";
-          }
+        // Hide the items that don't match
+        itemsToHide.forEach((item) => {
+          item.style.display = "none";
         });
 
-        // Reset animation lock after all animations complete
-        setTimeout(
-          () => {
-            isAnimating = false;
-          },
-          portfolioItems.length * 100 + 500
-        );
+        // Show and animate in the matching items
+        itemsToShow.forEach((item, index) => {
+          item.style.display = "block";
+          item.style.opacity = "0";
+          item.style.transform = "scale(0.8) translateY(20px)";
+
+          // Stagger the appearance
+          setTimeout(() => {
+            item.style.opacity = "1";
+            item.style.transform = "scale(1) translateY(0)";
+          }, index * 80);
+        });
+
+        // Clean up and reset animation lock
+        setTimeout(() => {
+          portfolioItems.forEach((item) => {
+            item.classList.remove("filtering");
+          });
+          isAnimating = false;
+        }, itemsToShow.length * 80 + 400);
       }, 400);
     });
   });
@@ -413,12 +426,13 @@ const categories = [
       const title = item.dataset.title;
       const description = item.dataset.description;
 
-      modalVideo.src = videoSrc;
-      modalTitle.textContent = title;
-      modalDescription.textContent = description;
+      if (videoSrc) modalVideo.src = videoSrc;
+      if (title) modalTitle.textContent = title;
+      if (description) modalDescription.textContent = description;
 
       // Smooth modal opening
       videoModal.classList.remove("hidden");
+      videoModal.classList.add("flex");
       videoModal.style.opacity = "0";
       videoModal.style.transform = "scale(0.9)";
 
@@ -433,29 +447,36 @@ const categories = [
 
   // Enhanced modal closing
   function closeModalAnimated() {
+    if (!videoModal) return;
+    
     videoModal.style.opacity = "0";
     videoModal.style.transform = "scale(0.9)";
 
     setTimeout(() => {
       videoModal.classList.add("hidden");
-      modalVideo.src = "";
+      videoModal.classList.remove("flex");
+      if (modalVideo) modalVideo.src = "";
       document.body.style.overflow = "auto";
     }, 200);
   }
 
   // Close modal
-  closeModal.addEventListener("click", closeModalAnimated);
+  if (closeModal) {
+    closeModal.addEventListener("click", closeModalAnimated);
+  }
 
   // Close modal on outside click
-  videoModal.addEventListener("click", (e) => {
-    if (e.target === videoModal) {
-      closeModalAnimated();
-    }
-  });
+  if (videoModal) {
+    videoModal.addEventListener("click", (e) => {
+      if (e.target === videoModal) {
+        closeModalAnimated();
+      }
+    });
+  }
 
   // Close modal with Escape key
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !videoModal.classList.contains("hidden")) {
+    if (e.key === "Escape" && videoModal && !videoModal.classList.contains("hidden")) {
       closeModalAnimated();
     }
   });

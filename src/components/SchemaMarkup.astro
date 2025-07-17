@@ -1,7 +1,26 @@
 ---
+interface Breadcrumb {
+  name: string;
+  url: string;
+}
+
+interface ServiceData {
+  name: string;
+  description: string;
+  category: string;
+  priceRange: string;
+}
+
+interface PageData {
+  name: string;
+  description: string;
+  url: string;
+  breadcrumbs?: Breadcrumb[];
+}
+
 interface Props {
   type: "organization" | "service" | "webpage";
-  data?: any;
+  data?: ServiceData | PageData;
 }
 
 const { type, data } = Astro.props;
@@ -42,7 +61,7 @@ const baseOrganization = {
   ],
 };
 
-const generateServiceSchema = (serviceData: any) => ({
+const generateServiceSchema = (serviceData: ServiceData) => ({
   "@context": "https://schema.org",
   "@type": "Service",
   name: serviceData.name,
@@ -58,7 +77,7 @@ const generateServiceSchema = (serviceData: any) => ({
   },
 });
 
-const generateWebPageSchema = (pageData: any) => ({
+const generateWebPageSchema = (pageData: PageData) => ({
   "@context": "https://schema.org",
   "@type": "WebPage",
   name: pageData.name,
@@ -68,7 +87,7 @@ const generateWebPageSchema = (pageData: any) => ({
   breadcrumb: {
     "@type": "BreadcrumbList",
     itemListElement:
-      pageData.breadcrumbs?.map((crumb: any, index: number) => ({
+      pageData.breadcrumbs?.map((crumb: Breadcrumb, index: number) => ({
         "@type": "ListItem",
         position: index + 1,
         name: crumb.name,
@@ -77,20 +96,20 @@ const generateWebPageSchema = (pageData: any) => ({
   },
 });
 
-let schemaData;
+let schemaData: any;
 switch (type) {
   case "organization":
     schemaData = baseOrganization;
     break;
   case "service":
-    schemaData = generateServiceSchema(data);
+    schemaData = generateServiceSchema(data as ServiceData);
     break;
   case "webpage":
-    schemaData = generateWebPageSchema(data);
+    schemaData = generateWebPageSchema(data as PageData);
     break;
   default:
     schemaData = baseOrganization;
 }
 ---
 
-<script type="application/ld+json" set:html={JSON.stringify(schemaData)} />
+<script type="application/ld+json" set:html={JSON.stringify(schemaData)} is:inline />
