@@ -77,16 +77,16 @@ const isHomePage = Astro.url.pathname === "/";
     <header>
       <nav
         id="navbar"
-        class={`fixed w-full top-0 z-50 transition-all duration-300 ${isHomePage ? "bg-transparent" : "bg-white shadow-sm"}`}
+        class="fixed w-full top-0 z-50 transition-all duration-300 bg-white/80 backdrop-blur-md shadow-sm"
       >
         <div
-          class={`container-max section-padding ${isHomePage ? "py-6" : "py-4"}`}
+          class="container-max section-padding py-4"
         >
           <div class="flex justify-between items-center">
             <div class="flex items-center">
               <a
                 href="/"
-                class={`text-2xl font-bold nav-logo ${isHomePage ? "text-white" : "text-primary-600"}`}
+                class="text-2xl font-bold nav-logo text-primary-600"
               >
                 NJ Drones
               </a>
@@ -95,12 +95,12 @@ const isHomePage = Astro.url.pathname === "/";
             <div class="hidden md:flex space-x-8">
               <a
                 href="/"
-                class={`nav-link transition-colors ${isHomePage ? "text-white hover:text-primary-200" : "text-gray-700 hover:text-primary-600"}`}
+                class="nav-link transition-colors text-gray-700 hover:text-primary-600"
                 >Home</a
               >
               <div class="relative group">
                 <span
-                  class={`nav-link transition-colors cursor-pointer ${isHomePage ? "text-white hover:text-primary-200" : "text-gray-700 hover:text-primary-600"}`}
+                  class="nav-link transition-colors cursor-pointer text-gray-700 hover:text-primary-600"
                   >Services</span
                 >
                 <div
@@ -142,17 +142,17 @@ const isHomePage = Astro.url.pathname === "/";
               </div>
               <a
                 href="/portfolio"
-                class={`nav-link transition-colors ${isHomePage ? "text-white hover:text-primary-200" : "text-gray-700 hover:text-primary-600"}`}
+                class="nav-link transition-colors text-gray-700 hover:text-primary-600"
                 >Portfolio</a
               >
               <a
                 href="/about"
-                class={`nav-link transition-colors ${isHomePage ? "text-white hover:text-primary-200" : "text-gray-700 hover:text-primary-600"}`}
+                class="nav-link transition-colors text-gray-700 hover:text-primary-600"
                 >About</a
               >
               <a
                 href="/contact"
-                class={`nav-link transition-colors ${isHomePage ? "text-white hover:text-primary-200" : "text-gray-700 hover:text-primary-600"}`}
+                class="nav-link transition-colors text-gray-700 hover:text-primary-600"
                 >Contact</a
               >
             </div>
@@ -160,7 +160,7 @@ const isHomePage = Astro.url.pathname === "/";
             <div class="hidden md:block">
               <a
                 href="/contact"
-                class={`nav-cta ${isHomePage ? "btn-secondary-modern" : "btn-primary"}`}
+                class="nav-cta btn-primary"
                 >Get Quote</a
               >
             </div>
@@ -172,13 +172,13 @@ const isHomePage = Astro.url.pathname === "/";
             >
               <div class="hamburger-lines">
                 <span
-                  class={`hamburger-line ${isHomePage ? "bg-white" : "bg-gray-700"}`}
+                  class="hamburger-line bg-gray-700"
                 ></span>
                 <span
-                  class={`hamburger-line ${isHomePage ? "bg-white" : "bg-gray-700"}`}
+                  class="hamburger-line bg-gray-700"
                 ></span>
                 <span
-                  class={`hamburger-line ${isHomePage ? "bg-white" : "bg-gray-700"}`}
+                  class="hamburger-line bg-gray-700"
                 ></span>
               </div>
             </button>
@@ -328,10 +328,8 @@ const isHomePage = Astro.url.pathname === "/";
     
     <script define:vars={{ isHomePage }} is:inline>
       document.addEventListener("DOMContentLoaded", () => {
-        // Get the initializeNavigationScroll function from the global scope
-        if (window.initializeNavigationScroll) {
-          window.initializeNavigationScroll(isHomePage);
-        }
+        // Navigation scroll disabled - navbar is always visible with background
+        console.log("Navigation scroll disabled - always visible navbar");
       });
     </script>
 

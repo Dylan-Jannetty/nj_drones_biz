@@ -61,6 +61,13 @@ function openMenu(
   overlay.style.transform = "translateX(0)";
   const menuBtn = document.getElementById("mobile-menu-btn");
   menuBtn?.classList.add("menu-open");
+  
+  // Change navbar to solid white background
+  const navbar = document.getElementById("navbar");
+  if (navbar) {
+    navbar.style.backgroundColor = "rgb(255, 255, 255)";
+    navbar.style.backdropFilter = "none";
+  }
 
   // Animate hamburger to X
   if (hamburgerLines.length >= 3) {
@@ -90,6 +97,13 @@ function closeMenu(
   overlay.style.transform = "translateX(100%)";
   const menuBtn = document.getElementById("mobile-menu-btn");
   menuBtn?.classList.remove("menu-open");
+  
+  // Restore navbar to blurred transparent background
+  const navbar = document.getElementById("navbar");
+  if (navbar) {
+    navbar.style.backgroundColor = "";
+    navbar.style.backdropFilter = "";
+  }
 
   // Animate X back to hamburger
   if (hamburgerLines.length >= 3) {
