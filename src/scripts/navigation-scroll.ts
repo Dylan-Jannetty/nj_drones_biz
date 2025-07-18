@@ -49,9 +49,15 @@ export function initializeNavigationScroll(isHomePage: boolean): void {
 
   // Initial check
   updateNavbar();
+  
+  // Apply responsive colors on initial load
+  applyResponsiveColors(elements);
 
   // Listen for scroll events
   window.addEventListener("scroll", updateNavbar);
+  
+  // Listen for resize events to reapply responsive colors
+  window.addEventListener("resize", () => applyResponsiveColors(elements));
   
   scrollState.initialized = true;
 }
@@ -73,7 +79,7 @@ function setScrolledState(elements: NavigationElements): void {
 
   // Update logo color
   elements.navLogo?.classList.add("text-primary-600");
-  elements.navLogo?.classList.remove("text-white");
+  elements.navLogo?.classList.remove("text-white", "lg:text-white", "md:text-primary-600");
 
   // Update nav links
   elements.navLinks?.forEach((link) => {
@@ -89,8 +95,35 @@ function setScrolledState(elements: NavigationElements): void {
   const hamburgerLines = elements.navMobileBtn?.querySelectorAll(".hamburger-line") as NodeListOf<HTMLElement>;
   hamburgerLines?.forEach((line) => {
     line.classList.add("bg-gray-700");
-    line.classList.remove("bg-white");
+    line.classList.remove("bg-white", "lg:bg-white", "md:bg-gray-700");
   });
+}
+
+function applyResponsiveColors(elements: NavigationElements): void {
+  // Check if we're on tablet or smaller screen
+  const isTabletOrSmaller = window.innerWidth < 1024; // lg breakpoint is 1024px
+  
+  if (isTabletOrSmaller && !scrollState.isScrolled) {
+    // Apply tablet/mobile colors even when transparent
+    elements.navLogo?.classList.remove("text-white");
+    elements.navLogo?.classList.add("text-primary-600");
+    
+    const hamburgerLines = elements.navMobileBtn?.querySelectorAll(".hamburger-line") as NodeListOf<HTMLElement>;
+    hamburgerLines?.forEach((line) => {
+      line.classList.remove("bg-white");
+      line.classList.add("bg-gray-700");
+    });
+  } else if (!isTabletOrSmaller && !scrollState.isScrolled) {
+    // Apply desktop colors when transparent
+    elements.navLogo?.classList.remove("text-primary-600");
+    elements.navLogo?.classList.add("text-white");
+    
+    const hamburgerLines = elements.navMobileBtn?.querySelectorAll(".hamburger-line") as NodeListOf<HTMLElement>;
+    hamburgerLines?.forEach((line) => {
+      line.classList.remove("bg-gray-700");
+      line.classList.add("bg-white");
+    });
+  }
 }
 
 function setTransparentState(elements: NavigationElements): void {
@@ -108,10 +141,6 @@ function setTransparentState(elements: NavigationElements): void {
   elements.navContainer?.classList.remove("py-4");
   elements.navContainer?.classList.add("py-6");
 
-  // Update logo color
-  elements.navLogo?.classList.remove("text-primary-600");
-  elements.navLogo?.classList.add("text-white");
-
   // Update nav links
   elements.navLinks?.forEach((link) => {
     link.classList.remove(
@@ -125,12 +154,8 @@ function setTransparentState(elements: NavigationElements): void {
   elements.navCta?.classList.remove("btn-primary");
   elements.navCta?.classList.add("btn-secondary-modern");
 
-  // Update mobile button hamburger lines
-  const hamburgerLines = elements.navMobileBtn?.querySelectorAll(".hamburger-line") as NodeListOf<HTMLElement>;
-  hamburgerLines?.forEach((line) => {
-    line.classList.remove("bg-gray-700");
-    line.classList.add("bg-white");
-  });
+  // Apply responsive colors
+  applyResponsiveColors(elements);
 }
 
 export function getScrollState(): ScrollState {
