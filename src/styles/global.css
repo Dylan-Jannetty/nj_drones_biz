@@ -9,7 +9,7 @@
   }
   
   body {
-    @apply text-stone-700 bg-accent-50;
+    @apply text-stone-700 bg-stone-50;
     line-height: 1.6;
   }
   
@@ -26,20 +26,33 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200;
+    @apply bg-vibrant-600 hover:bg-vibrant-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl;
   }
   
   .btn-secondary {
-    @apply bg-white hover:bg-primary-50 text-primary-600 font-semibold py-3 px-6 rounded-lg border border-primary-600 transition-colors duration-200;
+    @apply bg-white hover:bg-vibrant-50 text-vibrant-600 font-semibold py-3 px-6 rounded-lg border border-vibrant-600 transition-colors duration-200 shadow-md hover:shadow-lg;
+  }
+  
+  .btn-success {
+    @apply bg-success-600 hover:bg-success-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl;
+  }
+  
+  .btn-warning {
+    @apply bg-warning-500 hover:bg-warning-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl;
   }
   
   .btn-primary-modern {
-    @apply bg-white text-stone-800 hover:bg-accent-100 rounded-full transition-all duration-300 inline-flex items-center justify-center;
+    @apply bg-vibrant-600 hover:bg-vibrant-700 text-white rounded-full transition-all duration-300 inline-flex items-center justify-center shadow-lg hover:shadow-xl;
     backdrop-filter: blur(10px);
   }
   
   .btn-secondary-modern {
-    @apply bg-transparent text-white hover:bg-white/10 border border-white/30 hover:border-white/50 rounded-full transition-all duration-300 inline-flex items-center justify-center;
+    @apply bg-white/90 hover:bg-white text-vibrant-600 border border-vibrant-600/30 hover:border-vibrant-600 rounded-full transition-all duration-300 inline-flex items-center justify-center shadow-md hover:shadow-lg;
+    backdrop-filter: blur(10px);
+  }
+  
+  .btn-vibrant-modern {
+    @apply bg-gradient-to-r from-vibrant-500 to-vibrant-600 hover:from-vibrant-600 hover:to-vibrant-700 text-white rounded-full transition-all duration-300 inline-flex items-center justify-center shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
     backdrop-filter: blur(10px);
   }
   
@@ -65,5 +78,17 @@
   
   .hero-text-shadow {
     text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .bg-grid-pattern {
+    background-image: 
+      linear-gradient(rgba(0, 0, 0, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  
+  .bg-dot-pattern {
+    background-image: radial-gradient(circle, rgba(0, 0, 0, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
   }
 }

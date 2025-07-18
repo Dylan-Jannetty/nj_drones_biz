@@ -78,12 +78,12 @@ function setScrolledState(elements: NavigationElements): void {
   elements.navContainer?.classList.remove("py-6");
 
   // Update logo color
-  elements.navLogo?.classList.add("text-primary-600");
-  elements.navLogo?.classList.remove("text-white", "lg:text-white", "md:text-primary-600");
+  elements.navLogo?.classList.add("text-primary-700");
+  elements.navLogo?.classList.remove("text-white", "lg:text-white", "md:text-primary-700");
 
   // Update nav links
   elements.navLinks?.forEach((link) => {
-    link.classList.add("text-gray-700", "hover:text-primary-600");
+    link.classList.add("text-stone-700", "hover:text-primary-700");
     link.classList.remove("text-white", "hover:text-primary-200");
   });
 
@@ -94,8 +94,8 @@ function setScrolledState(elements: NavigationElements): void {
   // Update mobile button hamburger lines
   const hamburgerLines = elements.navMobileBtn?.querySelectorAll(".hamburger-line") as NodeListOf<HTMLElement>;
   hamburgerLines?.forEach((line) => {
-    line.classList.add("bg-gray-700");
-    line.classList.remove("bg-white", "lg:bg-white", "md:bg-gray-700");
+    line.classList.add("bg-stone-700");
+    line.classList.remove("bg-white", "lg:bg-white", "md:bg-stone-700");
   });
 }
 
@@ -106,21 +106,21 @@ function applyResponsiveColors(elements: NavigationElements): void {
   if (isTabletOrSmaller && !scrollState.isScrolled) {
     // Apply tablet/mobile colors even when transparent
     elements.navLogo?.classList.remove("text-white");
-    elements.navLogo?.classList.add("text-primary-600");
+    elements.navLogo?.classList.add("text-primary-700");
     
     const hamburgerLines = elements.navMobileBtn?.querySelectorAll(".hamburger-line") as NodeListOf<HTMLElement>;
     hamburgerLines?.forEach((line) => {
       line.classList.remove("bg-white");
-      line.classList.add("bg-gray-700");
+      line.classList.add("bg-stone-700");
     });
   } else if (!isTabletOrSmaller && !scrollState.isScrolled) {
     // Apply desktop colors when transparent
-    elements.navLogo?.classList.remove("text-primary-600");
+    elements.navLogo?.classList.remove("text-primary-700");
     elements.navLogo?.classList.add("text-white");
     
     const hamburgerLines = elements.navMobileBtn?.querySelectorAll(".hamburger-line") as NodeListOf<HTMLElement>;
     hamburgerLines?.forEach((line) => {
-      line.classList.remove("bg-gray-700");
+      line.classList.remove("bg-stone-700");
       line.classList.add("bg-white");
     });
   }
@@ -144,8 +144,8 @@ function setTransparentState(elements: NavigationElements): void {
   // Update nav links
   elements.navLinks?.forEach((link) => {
     link.classList.remove(
-      "text-gray-700",
-      "hover:text-primary-600"
+      "text-stone-700",
+      "hover:text-primary-700"
     );
     link.classList.add("text-white", "hover:text-primary-200");
   });

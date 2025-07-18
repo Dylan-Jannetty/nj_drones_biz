@@ -78,10 +78,10 @@ function openMenu(
     hamburgerLines[2].style.backgroundColor = "#000000";
   }
 
-  // Change logo color to brown (stone-600)
+  // Change logo color to neutral (stone-600)
   if (navLogo) {
     navLogo.style.transition = "color 0.3s ease";
-    navLogo.style.color = "rgb(138, 116, 86)"; // stone-600 color
+    navLogo.style.color = "rgb(117, 117, 117)"; // stone-600 color
   }
 
   // Prevent body scroll

@@ -26,13 +26,31 @@ const initialVideoUrl = generateVideoUrl();
 
   <ServicesGrid />
 
-  <section class="section-padding bg-white">
-    <div class="container-max">
+  <section class="section-padding relative overflow-hidden">
+    <!-- Complex Background Design -->
+    <div class="absolute inset-0 pointer-events-none">
+      <!-- Gradient background with organic flow -->
+      <div class="absolute inset-0 bg-gradient-to-br from-stone-50 via-white to-accent-50"></div>
+      
+      <!-- Floating organic shapes -->
+      <div class="absolute -top-20 -right-20 w-96 h-96 bg-gradient-to-br from-vibrant-200/20 to-vibrant-300/10 rounded-full blur-3xl transform rotate-12"></div>
+      <div class="absolute -bottom-20 -left-20 w-80 h-80 bg-gradient-to-tr from-success-200/20 to-success-300/10 rounded-full blur-3xl transform -rotate-12"></div>
+      <div class="absolute top-1/3 left-1/3 w-64 h-64 bg-gradient-to-r from-warning-200/15 to-transparent rounded-full blur-3xl transform rotate-45"></div>
+      
+      <!-- Subtle pattern overlay -->
+      <div class="absolute inset-0 bg-dot-pattern opacity-5"></div>
+      
+      <!-- Flowing wave elements -->
+      <div class="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-white/50 to-transparent"></div>
+      <div class="absolute bottom-0 right-0 w-full h-32 bg-gradient-to-t from-accent-50/50 to-transparent"></div>
+    </div>
+    
+    <div class="container-max relative z-10">
       <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mb-4">
           Why Choose NJ Drones?
         </h2>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        <p class="text-xl text-stone-600 max-w-2xl mx-auto">
           We combine cutting-edge technology with creative vision to deliver
           exceptional results
         </p>
@@ -41,10 +59,10 @@ const initialVideoUrl = generateVideoUrl();
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div class="text-center">
           <div
-            class="bg-primary-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
+            class="bg-vibrant-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
           >
             <svg
-              class="w-8 h-8 text-primary-600"
+              class="w-8 h-8 text-vibrant-600"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -56,20 +74,20 @@ const initialVideoUrl = generateVideoUrl();
                 d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
           </div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">
+          <h3 class="text-xl font-semibold text-stone-900 mb-2">
             FAA Certified
           </h3>
-          <p class="text-gray-600">
+          <p class="text-stone-600">
             Licensed and insured drone pilot with all necessary certifications
           </p>
         </div>
 
         <div class="text-center">
           <div
-            class="bg-primary-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
+            class="bg-vibrant-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
           >
             <svg
-              class="w-8 h-8 text-primary-600"
+              class="w-8 h-8 text-vibrant-600"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -82,10 +100,10 @@ const initialVideoUrl = generateVideoUrl();
               ></path>
             </svg>
           </div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">
+          <h3 class="text-xl font-semibold text-stone-900 mb-2">
             4K Video Quality
           </h3>
-          <p class="text-gray-600">
+          <p class="text-stone-600">
             Professional-grade equipment delivering stunning 4K resolution
             footage
           </p>
@@ -93,10 +111,10 @@ const initialVideoUrl = generateVideoUrl();
 
         <div class="text-center">
           <div
-            class="bg-primary-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
+            class="bg-vibrant-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
           >
             <svg
-              class="w-8 h-8 text-primary-600"
+              class="w-8 h-8 text-vibrant-600"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -108,20 +126,20 @@ const initialVideoUrl = generateVideoUrl();
                 d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
             </svg>
           </div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">
+          <h3 class="text-xl font-semibold text-stone-900 mb-2">
             Fast Turnaround
           </h3>
-          <p class="text-gray-600">
+          <p class="text-stone-600">
             Quick delivery of edited footage within 48-72 hours
           </p>
         </div>
 
         <div class="text-center">
           <div
-            class="bg-primary-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
+            class="bg-vibrant-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
           >
             <svg
-              class="w-8 h-8 text-primary-600"
+              class="w-8 h-8 text-vibrant-600"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -134,10 +152,10 @@ const initialVideoUrl = generateVideoUrl();
               ></path>
             </svg>
           </div>
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">
+          <h3 class="text-xl font-semibold text-stone-900 mb-2">
             Personal Service
           </h3>
-          <p class="text-gray-600">
+          <p class="text-stone-600">
             Dedicated support from consultation to final delivery
           </p>
         </div>

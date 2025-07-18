@@ -7,24 +7,31 @@ import ContactCTA from "../components/ContactCTA.astro";
   title="About NJ Drones | Professional Drone Videography"
   description="Learn about our professional drone videography services, FAA certified pilots, and commitment to capturing stunning aerial footage across New Jersey."
 >
-  <section class="section-padding bg-white">
-    <div class="container-max">
+  <section class="section-padding bg-gradient-to-r from-stone-50 to-white relative overflow-hidden">
+    <!-- Decorative Elements -->
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-0 right-0 w-80 h-80 bg-gradient-to-bl from-vibrant-100/30 to-transparent rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-success-100/30 to-transparent rounded-full blur-3xl"></div>
+      <div class="absolute inset-0 bg-dot-pattern opacity-5"></div>
+    </div>
+    
+    <div class="container-max relative z-10">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
         <div>
-          <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+          <h1 class="text-4xl md:text-5xl font-bold text-stone-900 mb-6">
             About NJ Drones
           </h1>
-          <p class="text-xl text-gray-600 mb-6">
+          <p class="text-xl text-stone-600 mb-6">
             We are passionate aerial videographers dedicated to capturing your
             world from breathtaking new perspectives.
           </p>
-          <p class="text-gray-600 mb-6">
+          <p class="text-stone-600 mb-6">
             Founded in 2020, NJ Drones has quickly become New Jersey's premier
             drone videography service. Our team combines cutting-edge technology
             with creative vision to deliver stunning aerial footage that tells
             your story like never before.
           </p>
-          <p class="text-gray-600 mb-8">
+          <p class="text-stone-600 mb-8">
             Whether you're a real estate professional looking to showcase
             properties, a couple planning your dream wedding, or a business
             owner wanting to highlight your facilities, we bring years of
@@ -33,20 +40,20 @@ import ContactCTA from "../components/ContactCTA.astro";
 
           <div class="grid grid-cols-2 gap-6">
             <div class="text-center">
-              <div class="text-3xl font-bold text-primary-600 mb-2">500+</div>
-              <div class="text-gray-600">Projects Completed</div>
+              <div class="text-3xl font-bold text-vibrant-600 mb-2">500+</div>
+              <div class="text-stone-600">Projects Completed</div>
             </div>
             <div class="text-center">
-              <div class="text-3xl font-bold text-primary-600 mb-2">5+</div>
-              <div class="text-gray-600">Years Experience</div>
+              <div class="text-3xl font-bold text-vibrant-600 mb-2">5+</div>
+              <div class="text-stone-600">Years Experience</div>
             </div>
             <div class="text-center">
-              <div class="text-3xl font-bold text-primary-600 mb-2">100%</div>
-              <div class="text-gray-600">Client Satisfaction</div>
+              <div class="text-3xl font-bold text-vibrant-600 mb-2">100%</div>
+              <div class="text-stone-600">Client Satisfaction</div>
             </div>
             <div class="text-center">
-              <div class="text-3xl font-bold text-primary-600 mb-2">24/7</div>
-              <div class="text-gray-600">Support Available</div>
+              <div class="text-3xl font-bold text-vibrant-600 mb-2">24/7</div>
+              <div class="text-stone-600">Support Available</div>
             </div>
           </div>
         </div>
@@ -63,13 +70,20 @@ import ContactCTA from "../components/ContactCTA.astro";
     </div>
   </section>
 
-  <section class="section-padding bg-gray-50">
-    <div class="container-max">
+  <section class="section-padding bg-gradient-to-br from-accent-50 to-accent-100 relative overflow-hidden">
+    <!-- Decorative Elements -->
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-0 left-0 w-72 h-72 bg-gradient-to-br from-warning-200/20 to-transparent rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tl from-vibrant-200/20 to-transparent rounded-full blur-3xl"></div>
+      <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-gradient-to-r from-success-200/10 to-warning-200/10 rounded-full blur-3xl"></div>
+    </div>
+    
+    <div class="container-max relative z-10">
       <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mb-4">
           Meet Our Team
         </h2>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        <p class="text-xl text-stone-600 max-w-2xl mx-auto">
           FAA certified pilots and creative professionals dedicated to
           excellence
         </p>
@@ -83,9 +97,9 @@ import ContactCTA from "../components/ContactCTA.astro";
             class="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
             loading="lazy"
           />
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">Alex Johnson</h3>
-          <p class="text-primary-600 mb-2">Lead Pilot & Founder</p>
-          <p class="text-gray-600 text-sm">
+          <h3 class="text-xl font-semibold text-stone-900 mb-2">Alex Johnson</h3>
+          <p class="text-vibrant-600 mb-2">Lead Pilot & Founder</p>
+          <p class="text-stone-600 text-sm">
             FAA Part 107 Certified with 5+ years of commercial drone experience
           </p>
         </div>
@@ -97,11 +111,11 @@ import ContactCTA from "../components/ContactCTA.astro";
             class="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
             loading="lazy"
           />
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">
+          <h3 class="text-xl font-semibold text-stone-900 mb-2">
             Sarah Martinez
           </h3>
-          <p class="text-primary-600 mb-2">Creative Director</p>
-          <p class="text-gray-600 text-sm">
+          <p class="text-vibrant-600 mb-2">Creative Director</p>
+          <p class="text-stone-600 text-sm">
             Expert in cinematic editing and post-production with 8+ years
             experience
           </p>
@@ -114,9 +128,9 @@ import ContactCTA from "../components/ContactCTA.astro";
             class="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
             loading="lazy"
           />
-          <h3 class="text-xl font-semibold text-gray-900 mb-2">Mike Chen</h3>
-          <p class="text-primary-600 mb-2">Project Coordinator</p>
-          <p class="text-gray-600 text-sm">
+          <h3 class="text-xl font-semibold text-stone-900 mb-2">Mike Chen</h3>
+          <p class="text-vibrant-600 mb-2">Project Coordinator</p>
+          <p class="text-stone-600 text-sm">
             Ensures seamless project management and client communication
           </p>
         </div>
@@ -124,13 +138,20 @@ import ContactCTA from "../components/ContactCTA.astro";
     </div>
   </section>
 
-  <section class="section-padding bg-white">
-    <div class="container-max">
+  <section class="section-padding bg-gradient-to-bl from-white to-stone-50 relative overflow-hidden">
+    <!-- Decorative Elements -->
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-success-100/30 to-transparent rounded-full blur-3xl"></div>
+      <div class="absolute bottom-0 right-0 w-80 h-80 bg-gradient-to-tl from-vibrant-100/30 to-transparent rounded-full blur-3xl"></div>
+      <div class="absolute inset-0 bg-grid-pattern opacity-5"></div>
+    </div>
+    
+    <div class="container-max relative z-10">
       <div class="text-center mb-16">
-        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mb-4">
           Our Equipment
         </h2>
-        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        <p class="text-xl text-stone-600 max-w-2xl mx-auto">
           Professional-grade equipment for stunning 4K aerial footage
         </p>
       </div>
@@ -138,10 +159,10 @@ import ContactCTA from "../components/ContactCTA.astro";
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
         <div class="text-center">
           <div
-            class="bg-primary-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
+            class="bg-vibrant-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
           >
             <svg
-              class="w-8 h-8 text-primary-600"
+              class="w-8 h-8 text-vibrant-600"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -154,18 +175,18 @@ import ContactCTA from "../components/ContactCTA.astro";
               ></path>
             </svg>
           </div>
-          <h3 class="text-lg font-semibold text-gray-900 mb-2">DJI Mavic 3</h3>
-          <p class="text-gray-600 text-sm">
+          <h3 class="text-lg font-semibold text-stone-900 mb-2">DJI Mavic 3</h3>
+          <p class="text-stone-600 text-sm">
             Professional drone with 4K camera and advanced stabilization
           </p>
         </div>
 
         <div class="text-center">
           <div
-            class="bg-primary-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
+            class="bg-vibrant-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
           >
             <svg
-              class="w-8 h-8 text-primary-600"
+              class="w-8 h-8 text-vibrant-600"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -178,18 +199,18 @@ import ContactCTA from "../components/ContactCTA.astro";
               ></path>
             </svg>
           </div>
-          <h3 class="text-lg font-semibold text-gray-900 mb-2">DJI Air 2S</h3>
-          <p class="text-gray-600 text-sm">
+          <h3 class="text-lg font-semibold text-stone-900 mb-2">DJI Air 2S</h3>
+          <p class="text-stone-600 text-sm">
             Compact drone perfect for tight spaces and indoor filming
           </p>
         </div>
 
         <div class="text-center">
           <div
-            class="bg-primary-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
+            class="bg-vibrant-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
           >
             <svg
-              class="w-8 h-8 text-primary-600"
+              class="w-8 h-8 text-vibrant-600"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -202,20 +223,20 @@ import ContactCTA from "../components/ContactCTA.astro";
               ></path>
             </svg>
           </div>
-          <h3 class="text-lg font-semibold text-gray-900 mb-2">
+          <h3 class="text-lg font-semibold text-stone-900 mb-2">
             Professional Editing
           </h3>
-          <p class="text-gray-600 text-sm">
+          <p class="text-stone-600 text-sm">
             Adobe Premiere Pro, After Effects, and DaVinci Resolve
           </p>
         </div>
 
         <div class="text-center">
           <div
-            class="bg-primary-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
+            class="bg-vibrant-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"
           >
             <svg
-              class="w-8 h-8 text-primary-600"
+              class="w-8 h-8 text-vibrant-600"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -228,10 +249,10 @@ import ContactCTA from "../components/ContactCTA.astro";
               ></path>
             </svg>
           </div>
-          <h3 class="text-lg font-semibold text-gray-900 mb-2">
+          <h3 class="text-lg font-semibold text-stone-900 mb-2">
             Fully Insured
           </h3>
-          <p class="text-gray-600 text-sm">
+          <p class="text-stone-600 text-sm">
             Comprehensive liability insurance for all projects
           </p>
         </div>

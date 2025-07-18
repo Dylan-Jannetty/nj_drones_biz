@@ -45,28 +45,49 @@ const services = [
 ];
 ---
 
-<section class="section-padding bg-accent-200">
-  <div class="container-max">
+<section class="pt-16 pb-20 px-6 lg:px-8 relative overflow-hidden">
+  <!-- Organic Background Design -->
+  <div class="absolute inset-0 pointer-events-none">
+    <!-- Multi-layer gradient background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-accent-50 via-accent-100 to-stone-100"></div>
+    
+    <!-- Flowing organic shapes -->
+    <div class="absolute -top-32 -left-32 w-96 h-96 bg-gradient-to-br from-vibrant-300/25 to-vibrant-400/10 rounded-full blur-3xl transform rotate-45"></div>
+    <div class="absolute -bottom-32 -right-32 w-[30rem] h-[30rem] bg-gradient-to-tl from-success-300/25 to-success-400/10 rounded-full blur-3xl transform -rotate-45"></div>
+    <div class="absolute top-1/4 right-1/4 w-80 h-80 bg-gradient-to-r from-warning-300/15 to-vibrant-300/15 rounded-full blur-3xl transform rotate-12"></div>
+    
+    <!-- Subtle wave patterns -->
+    <div class="absolute top-0 left-0 w-full h-48 bg-gradient-to-b from-white/30 to-transparent transform -skew-y-1"></div>
+    <div class="absolute bottom-0 right-0 w-full h-48 bg-gradient-to-t from-accent-100/30 to-transparent transform skew-y-1"></div>
+    
+    <!-- Texture overlay -->
+    <div class="absolute inset-0 bg-grid-pattern opacity-0.5"></div>
+  </div>
+  
+  <div class="container-max relative z-10">
     <div class="text-center mb-16">
-      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-stone-900 mb-4">
         Our Services
       </h2>
-      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+      <p class="text-xl text-stone-600 max-w-2xl mx-auto">
         Professional drone videography services tailored to your specific needs
       </p>
     </div>
     
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {services.map((service) => (
-        <div class="bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-shadow duration-300">
+      {services.map((service, index) => (
+        <div 
+          class="service-card bg-white rounded-xl shadow-lg p-8 hover:shadow-xl transition-all duration-300 opacity-0 transform translate-y-8"
+          data-index={index}
+        >
           <div class="text-4xl mb-4">{service.icon}</div>
-          <h3 class="text-2xl font-bold text-gray-900 mb-4">{service.title}</h3>
-          <p class="text-gray-600 mb-6">{service.description}</p>
+          <h3 class="text-2xl font-bold text-stone-900 mb-4">{service.title}</h3>
+          <p class="text-stone-600 mb-6">{service.description}</p>
           
           <ul class="space-y-2 mb-6">
             {service.features.map((feature) => (
-              <li class="flex items-center text-gray-700">
-                <svg class="w-5 h-5 text-primary-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <li class="flex items-center text-stone-700">
+                <svg class="w-5 h-5 text-vibrant-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
                 </svg>
                 {feature}
@@ -82,3 +103,62 @@ const services = [
     </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const serviceCards = document.querySelectorAll(".service-card");
+    
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px",
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const card = entry.target as HTMLElement;
+          const index = parseInt(card.dataset.index || "0");
+          
+          // Stagger the animations based on index
+          setTimeout(() => {
+            card.classList.add("animate-fall-in");
+            card.classList.remove("opacity-0", "translate-y-8");
+          }, index * 150); // 150ms delay between each card
+          
+          // Stop observing once animated
+          observer.unobserve(card);
+        }
+      });
+    }, observerOptions);
+    
+    serviceCards.forEach((card) => {
+      observer.observe(card);
+    });
+  });
+</script>
+
+<style>
+  @keyframes fallIn {
+    from {
+      opacity: 0;
+      transform: translateY(50px) scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+  
+  .animate-fall-in {
+    animation: fallIn 0.6s ease-out forwards;
+  }
+  
+  .service-card {
+    transition: all 0.3s ease-out;
+  }
+  
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+</style>
